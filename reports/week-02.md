@@ -49,7 +49,6 @@ The initial CNN architecture includes:
 - Improve CNN architecture.
 - Add regularization techniques:
   - Dropout
-  - Batch Normalization
 - Apply data augmentation techniques.
 - Train the improved model and compare results.
 - Generate performance graphs and error analysis.
