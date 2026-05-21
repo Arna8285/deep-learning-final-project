@@ -1,5 +1,3 @@
-# Week 4 Report — Final Evaluation and Model Results
-
 ## Completed Work
 
 During Week 4, the final stage of the CNN image classification project was completed. The main focus was on model evaluation, performance analysis, and final result preparation.
