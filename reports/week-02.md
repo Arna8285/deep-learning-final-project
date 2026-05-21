@@ -1,54 +1,51 @@
-## Completed Work
-- Performed data preprocessing for the dataset.
-- Resized and normalized images before training.
-- Split the dataset into training, validation, and test sets.
-- Built the baseline Convolutional Neural Network (CNN) model.
-- Configured the training process, loss function, and optimizer.
+## Objective of Week 2  
+The main goal of this week was to set up the dataset pipeline and implement initial models for image classification.
 
-## Data Preprocessing
-The following preprocessing techniques were applied:
-- Image resizing
-- Normalization
-- Conversion of images into tensors
+## Work Completed  
 
-Dataset split:
-- 80% Training set
-- 10% Validation set
-- 10% Test set
+### 1. Dataset Preparation  
+- Downloaded Intel Image Classification dataset from Kaggle  
+- Extracted dataset into train/test folders  
+- Organized data into structured directories:
+  - training set  
+  - validation set  
+  - test set  
 
-## Baseline CNN Model
-The initial CNN architecture includes:
-- Convolutional layers
-- ReLU activation functions
-- MaxPooling layers
-- Fully connected layers
-- Softmax output layer
+### 2. Data Preprocessing  
+- Resized all images to a fixed input size  
+- Normalized pixel values (0–1 scaling)  
+- Applied basic preprocessing pipeline for CNN and MLP models  
 
-## Important Files / Commits
-- Added preprocessing scripts
-- Added dataset splitting code
-- Implemented baseline CNN model
-- Added initial training configuration
 
-## Experiments Conducted
-- Trained the baseline CNN model on the training dataset.
-- Tested different batch sizes and learning rates.
-- Evaluated initial model performance on validation data.
+### 3. Baseline Model (MLP Implementation)  
+- Built a Multilayer Perceptron (MLP) model as a baseline  
+- Flattened image input into 1D vectors  
+- Trained model using Cross-Entropy Loss  
+- Evaluated initial performance on validation set  
 
-## Current Results
-- The model successfully learned basic image features.
-- Initial validation accuracy reached approximately 70%.
-- Training process works correctly without major errors.
 
-## Problems / Challenges
-- Model shows signs of overfitting after several epochs.
-- Training requires significant computation time.
-- Hyperparameter tuning is still needed.
+### 4. CNN Model Setup  
+- Designed initial Convolutional Neural Network architecture  
+- Added:
+  - Convolutional layers  
+  - Max Pooling layers  
+  - Fully connected layers  
+  - Dropout for regularization  
+- Implemented training pipeline  
 
-## Plan for Next Week
-- Improve CNN architecture.
-- Add regularization techniques:
-  - Dropout
-- Apply data augmentation techniques.
-- Train the improved model and compare results.
-- Generate performance graphs and error analysis.
+
+### 5. Batch Normalization (Initial Integration)  
+- Added Batch Normalization layers into CNN  
+- Observed improved training stability during early experiments  
+
+
+## Initial Observations  
+- MLP model showed limited performance due to lack of spatial feature learning  
+- CNN performed significantly better even in early training stages  
+- Batch Normalization helped reduce training instability  
+
+## Next Steps (Week 3 Plan)  
+- Improve CNN architecture (more layers / tuning)  
+- Apply data augmentation  
+- Tune hyperparameters (learning rate, batch size)  
+- Compare CNN vs MLP more formally using metrics  
