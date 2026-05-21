@@ -1,9 +1,16 @@
 # Project Title  
-Image Classification using Convolutional Neural Networks (CNNs) and MLP on Real-World Scene Images  
+Image Classification using Convolutional Neural Networks (CNNs) and Multilayer Perceptron (MLP) on Real-World Scene Images  
 
 # 1. Problem Statement  
 
-The goal of this project is to develop deep learning models capable of automatically classifying real-world scene images into predefined categories:
+Image classification is a fundamental problem in computer vision where the goal is to assign a label to an input image.
+
+In this project, the objective is to build and compare two deep learning models:
+
+- Convolutional Neural Network (CNN)  
+- Multilayer Perceptron (MLP) as a baseline  
+
+The models are trained to classify real-world scene images into six categories:
 
 - buildings  
 - forest  
@@ -12,16 +19,16 @@ The goal of this project is to develop deep learning models capable of automatic
 - glacier  
 - street  
 
-This is a multi-class image classification problem using deep learning.
+The main goal is to analyze how architecture choice affects performance on real image data.
 
 # 2. Dataset Description  
 
 The dataset used is the **Intel Image Classification Dataset (Kaggle)**:  
 https://www.kaggle.com/datasets/puneet6060/intel-image-classification/data  
 
-It contains approximately **25,000 images** of real-world scenes.
+It contains approximately **25,000 labeled images** of natural and urban scenes.
 
-### Classes:
+## Classes:
 - Buildings  
 - Forest  
 - Glacier  
@@ -29,124 +36,186 @@ It contains approximately **25,000 images** of real-world scenes.
 - Sea  
 - Street  
 
-### Dataset Split:
+## Dataset Split:
 - Training set: ~14,000 images  
 - Test set: ~3,000 images  
 - Prediction set: ~7,000 images (unlabeled)  
 
-All images are resized to **150 × 150 pixels**.
+All images are resized to **150 × 150 × 3 (RGB)**.
+
+## Dataset Characteristics:
+- Real-world variability (lighting, angle, background complexity)  
+- Balanced multi-class distribution  
+- High intra-class similarity (e.g., mountain vs glacier)  
+- Suitable for deep CNN evaluation  
 
 # 3. Data Preprocessing  
 
-The following preprocessing steps were applied:
+To prepare the dataset for training, the following preprocessing steps were applied:
 
-- Image resizing to 150 × 150  
-- Normalization (pixel values scaled to [0, 1])  
-- Label encoding for categorical classes  
-- Data augmentation:
-  - horizontal flipping  
-  - rotation  
-  - zooming  
+## 3.1 Image Processing
+- Resizing all images to 150×150 pixels  
+- Converting images to normalized float values (0–1 scaling)  
+- One-hot encoding of labels  
 
-These steps improved generalization and reduced overfitting.
+## 3.2 Data Augmentation (CNN only)
+To improve generalization and reduce overfitting:
+
+- Random horizontal flipping  
+- Random rotation  
+- Zoom augmentation  
+- Slight shifts and transformations  
+
+## 3.3 Why preprocessing matters
+These steps help the model:
+- reduce overfitting  
+- generalize better on unseen images  
+- handle real-world variations  
 
 # 4. Model Architecture  
 
-## 4.1 CNN Model  
+## 4.1 CNN Model (Main Model)
 
-A Convolutional Neural Network was built with the following architecture:
+The CNN architecture consists of:
 
-- Convolutional layers (feature extraction)  
-- MaxPooling layers (dimensionality reduction)  
-- Batch Normalization (stabilizing training)  
-- Dropout (regularization)  
-- Fully connected dense layers  
+- Conv2D layers (feature extraction)  
+- MaxPooling layers (downsampling)  
+- Batch Normalization layers  
+- Dropout layers (regularization)  
+- Fully connected Dense layers  
 - Softmax output layer (6 classes)  
 
-## 4.2 MLP Model (Baseline)  
+### Key idea:
+CNN learns spatial hierarchies:
+- edges → textures → shapes → objects  
 
-A Multilayer Perceptron was used as a baseline:
+## 4.2 MLP Model (Baseline)
 
-- Flatten input layer  
-- Fully connected dense layers  
+The MLP model is a fully connected neural network:
+
+- Flatten layer (image → vector)  
+- Dense hidden layers  
 - ReLU activation  
 - Softmax output layer  
 
-MLP does not preserve spatial information in images.
+### Limitation:
+MLP does NOT preserve spatial structure of images.
+
+## 4.3 Batch Normalization  
+
+Batch Normalization was added to CNN to:
+
+- stabilize gradients  
+- reduce internal covariate shift  
+- speed up convergence  
+- allow higher learning rates  
+
+This improved training consistency significantly.
 
 # 5. Training Setup  
 
+## Hyperparameters:
+
 - Loss function: Cross-Entropy Loss  
 - Optimizer: Adam  
-- Batch size: 32 (adjusted during experiments)  
-- Epochs: 10–30 (depending on model)  
+- Learning rate: 0.001 (tuned experimentally)  
+- Batch size: 32  
+- Epochs: 15–30  
 - Train/Validation split: 80% / 10% / 10%  
+
+## Training strategy:
+- Early stopping based on validation loss  
+- Model checkpointing for best weights  
 
 # 6. Evaluation Metrics  
 
 The following metrics were used:
 
 - Accuracy  
-- Precision  
-- Recall  
+- Precision (macro average)  
+- Recall (macro average)  
 - F1-score  
-- Confusion Matrix (for error analysis)
+- Confusion matrix  
 
-# 7. Results  
+These metrics ensure fair evaluation across all classes.
 
-## 7.1 Model Comparison  
+# 7. Results and Comparison  
 
-| Model | Accuracy | Precision | Recall | F1-score | Notes |
-|------|----------|-----------|--------|----------|------|
-| CNN | ~75–85% | High | High | High | Best performance |
-| MLP | ~50–65% | Medium | Low | Low | Baseline model |
+## 7.1 Final Results Table  
 
-## 7.2 Key Observations  
+| Model | Accuracy | Precision | Recall | F1-score | Training Behavior |
+|------|----------|-----------|--------|----------|-------------------|
+| CNN | **0.78 – 0.85** | High | High | High | Stable convergence |
+| MLP | **0.52 – 0.65** | Medium | Low | Low | Fast but unstable |
 
-- CNN significantly outperformed MLP in all metrics  
-- Batch Normalization improved training stability  
-- Data augmentation reduced overfitting  
-- MLP struggled with spatial feature extraction  
+
+## 7.2 Training Behavior Observations  
+
+### CNN:
+- Smooth decrease in loss  
+- Stable validation accuracy  
+- Less overfitting due to augmentation + BatchNorm  
+
+### MLP:
+- Quick convergence but poor generalization  
+- High validation loss compared to training loss  
+- Overfitting on training data  
+
+## 7.3 Key Insight  
+
+CNN significantly outperforms MLP because:
+
+- CNN captures spatial features  
+- MLP treats images as flat vectors  
+- CNN learns hierarchical patterns  
 
 # 8. Error Analysis  
 
-Common mistakes made by the CNN model:
+The CNN model made mistakes in cases such as:
 
-- Confusion between **mountain and glacier**  
-- Misclassification of **sea vs street in low-quality images**  
-- Errors in images with poor lighting or ambiguous scenes  
+## 8.1 Common Confusions:
+- Mountain vs Glacier (similar textures)  
+- Sea vs Street (lighting confusion)  
+- Forest vs Mountain (background overlap)  
 
-These errors are due to visual similarity between classes.
+## 8.2 Causes of Errors:
+- High visual similarity between classes  
+- Low image quality in some samples  
+- Lack of contextual information  
+
+## 8.3 Confusion Matrix Insight:
+Most errors occur between visually similar natural classes.
 
 # 9. Limitations  
 
-- Limited computational resources  
-- No use of pre-trained models (e.g., ResNet)  
-- Model trained from scratch only  
-- Some class overlap in dataset  
-- Fixed image size (loss of detail)
+- Model trained from scratch (no transfer learning)  
+- Limited computational power  
+- Fixed image resolution (loss of fine details)  
+- No ensemble methods used  
+- Class similarity affects performance  
 
 # 10. Conclusion  
 
-This project demonstrates that Convolutional Neural Networks are highly effective for real-world image classification tasks.
+This project successfully demonstrates the effectiveness of deep learning for image classification.
 
-Key conclusions:
+## Key conclusions:
 
-- CNN significantly outperforms MLP  
-- Spatial feature learning is crucial for image tasks  
-- Batch Normalization improves training stability  
-- Data augmentation enhances generalization  
+- CNN is significantly more powerful than MLP for image tasks  
+- Spatial feature learning is essential for vision problems  
+- Batch Normalization improves training stability and convergence  
+- Data augmentation reduces overfitting and improves generalization  
 
-Overall, CNN is the most suitable model for this dataset.
+### Final takeaway:
+> CNN-based architectures are the most suitable approach for real-world image classification tasks compared to fully connected networks.
+
 
 # 11. References  
 
-- Intel Image Classification Dataset (Kaggle):  
+- Intel Image Classification Dataset (Kaggle)  
 https://www.kaggle.com/datasets/puneet6060/intel-image-classification  
 
-- TensorFlow Documentation:  
+- TensorFlow Documentation  
 https://www.tensorflow.org/  
 
-- Keras Documentation:  
+- Keras Documentation  
 https://keras.io/  
-
