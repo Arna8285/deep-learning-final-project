@@ -150,4 +150,3 @@ https://www.tensorflow.org/
 - Keras Documentation:  
 https://keras.io/  
 
-- Deep Learning Book (Goodfellow et al.)  
