@@ -82,7 +82,6 @@ To improve model performance, the following techniques will be used:
 * **Regularization techniques:**
 
   * Dropout
-  * Batch Normalization
 
 * **CNN architecture optimization**
 
