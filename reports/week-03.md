@@ -13,7 +13,6 @@ The following improvements were added to the CNN model:
 ## Regularization Techniques
 
 - Dropout layers
-- Batch Normalization
 
 ## Data Augmentation
 
@@ -30,7 +29,6 @@ These methods helped improve model robustness and reduce overfitting.
 The updated CNN architecture includes:
 
 - Additional convolutional layers
-- Batch Normalization layers
 - Dropout layers
 - ReLU activation functions
 - MaxPooling layers
