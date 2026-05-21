@@ -1,1 +1,31 @@
+tensorflow==2.16.1
+numpy==1.26.4
+matplotlib==3.8.4
+opencv-python==4.10.0.84
+scikit-learn==1.5.0
+seaborn==0.13.2    
 
+
+tensorflow==2.16.1
+TensorFlow is the main deep learning framework used in this project.
+It was used to build, train, and evaluate the Convolutional Neural Network (CNN) model for image classification tasks.
+
+numpy==1.26.4
+NumPy is used for numerical computations and array operations.
+It helps process prediction outputs, image data, and class probability calculations.
+
+matplotlib==3.8.4
+Matplotlib is used for data visualization and plotting graphs.
+It was applied to display training accuracy, loss curves, and sample prediction results.
+
+opencv-python==4.10.0.84
+OpenCV is used for image loading and preprocessing operations.
+It was used to read images, convert color formats, and visualize dataset samples.
+
+scikit-learn==1.5.0
+Scikit-learn provides evaluation metrics for machine learning models.
+It was used to generate the classification report and confusion matrix for performance analysis.
+
+seaborn==0.13.2
+Seaborn is a visualization library built on top of Matplotlib.
+It was used to create the confusion matrix heatmap for easier interpretation of model predictions.
