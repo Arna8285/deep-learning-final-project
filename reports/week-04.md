@@ -1,121 +1,72 @@
-## Completed Work
+## Objective of Week 4  
+The main goal of this week was to finalize model evaluation, compare CNN and MLP performance, visualize results, and complete the project report.
 
-During Week 4, the final stage of the CNN image classification project was completed. The main focus was on model evaluation, performance analysis, and final result preparation.
+## Work Completed  
 
-The following tasks were completed:
+### 1. Final Model Evaluation  
+Both models were evaluated on the test dataset using the following metrics:
 
-- Evaluated the trained CNN model on the test dataset
-- Generated final predictions on unseen images
-- Created classification report (precision, recall, F1-score)
-- Built and analyzed confusion matrix
-- Performed qualitative analysis using sample predictions
-- Saved the final trained model in `.keras` format
-- Summarized overall project results
+- Accuracy  
+- Precision  
+- Recall  
+- F1-score  
 
-## Model Evaluation
+The evaluation was performed to measure real-world performance on unseen data.
 
-The final CNN model was tested on the Intel Image Classification Dataset using 3000 unseen test images.
+### 2. CNN Final Performance  
+The CNN model achieved strong results due to:
 
-### Final Performance:
+- Effective feature extraction using convolutional layers  
+- Improved training stability from Batch Normalization  
+- Reduced overfitting using Dropout and data augmentation  
 
-- **Test Accuracy:** ~85.6%
-- **Test Loss:** Low and stable
-- **Generalization:** Good performance on unseen data
-
-The model shows strong ability to classify real-world scene images.
-
-## Classification Report
-
-The classification report evaluates model performance for each class:
-
-Classes:
-- buildings
-- forest
-- glacier
-- mountain
-- sea
-- street
-
-### Key Observations:
-
-- High precision and recall for **forest** and **sea**
-- Moderate confusion between **mountain** and **glacier**
-- Overall balanced performance across all categories
-
-This shows that the model learned meaningful visual patterns
-
-## Confusion Matrix Analysis
-
-A confusion matrix was used to analyze prediction errors.
-
-### Findings:
-
-- Most predictions are correctly classified along the diagonal
-- Main confusion occurs between:
-  - mountain ↔ glacier
-  - street ↔ buildings
-- Natural scenes are classified more accurately than urban scenes
-
-This indicates that visually similar classes are harder to distinguish.
-
-## Sample Prediction Analysis
-
-Random test images were visualized with predicted labels.
-
-### Observations:
-
-- The model performs well on clear and distinct images
-- Some errors occur in ambiguous or mixed-feature images
-- Predictions are stable and consistent overall
-
-This confirms that the CNN learned useful feature representations.
-
-## Model Saving
-
-The final trained model was saved successfully using the modern Keras format:
-
-- File name: `cnn_intel_final_model.keras`
-
-This allows easy reuse without retraining.
-
-## Final Results Summary
-
-- Test Accuracy: ~85.6%
-- Stable training and convergence achieved
-- Reduced overfitting compared to baseline model
-- Strong generalization on unseen data
-- Improved performance after augmentation and regularization
-
-## Challenges
-
-During the project, the following challenges were observed:
-
-- Confusion between visually similar classes (mountain vs glacier)
-- Increased training time due to deeper architecture
-- Hyperparameter tuning required multiple experiments
-- CNN from scratch has limitations compared to transfer learning
-
-## Conclusion
-
-Week 4 completed the full machine learning pipeline for image classification.
-
-The CNN model successfully classifies six categories of real-world scenes with high accuracy and stable performance.
-
-The project demonstrates the importance of:
-
-- Data preprocessing
-- Data augmentation
-- Regularization techniques (Dropout, Batch Normalization)
-- Proper model evaluation
-
-Overall, the final model achieved strong and reliable performance for real-world image classification tasks.
+Overall, CNN showed strong generalization ability.
 
 
-## Future Improvements
+### 3. MLP Final Performance  
+The MLP model served as a baseline and showed:
 
-To further improve performance, the following approaches are recommended:
+- Faster but less accurate training  
+- Poor performance on complex image patterns  
+- Lack of spatial feature learning  
 
-- Use transfer learning (ResNet, VGG16, EfficientNet)
-- Apply early stopping and learning rate scheduling
-- Train with more epochs and better hardware (GPU)
-- Improve dataset augmentation techniques
+This confirmed that MLP is not suitable for image classification tasks compared to CNN.
+
+### 4. Model Comparison Summary  
+
+| Model | Performance | Observation |
+|------|------------|------------|
+| CNN | High accuracy (~70–85%) | Best performance, strong generalization |
+| MLP | Lower accuracy | Limited by lack of spatial feature extraction |
+
+
+### 5. Visualization of Results  
+The following plots were analyzed:
+
+- Training vs validation accuracy  
+- Training vs validation loss  
+- Performance comparison between CNN and MLP  
+
+These visualizations confirmed that CNN converges more effectively and generalizes better.
+
+
+## Key Findings  
+- CNN significantly outperforms MLP in image classification tasks  
+- Batch Normalization improves training stability and convergence speed  
+- Data augmentation helps reduce overfitting and improves generalization  
+- MLP is only suitable as a baseline model  
+
+
+## Final Conclusion  
+This project demonstrates the effectiveness of Convolutional Neural Networks for real-world image classification tasks.
+
+CNN models are able to learn spatial and hierarchical features, making them far superior to MLP models for image-based problems.
+
+Batch Normalization and data augmentation further improve performance and stability, resulting in a robust deep learning pipeline.
+
+
+## Project Outcome  
+- Successfully built CNN and MLP models  
+- Performed structured comparison  
+- Achieved expected accuracy range (70–85% for CNN)  
+- Completed full deep learning pipeline from preprocessing to evaluation  
