@@ -1,79 +1,61 @@
-## Completed Work
+## Objective of Week 3  
+The main goal of this week was to improve the CNN model, apply data augmentation, and perform a more structured comparison between CNN and MLP models.
 
-- Improved the baseline CNN architecture.
-- Added regularization techniques to reduce overfitting.
-- Applied data augmentation methods to improve generalization.
-- Trained the improved CNN model and compared results with the baseline model.
-- Generated performance graphs and conducted error analysis.
+## Work Completed  
 
-# Model Improvements
+### 1. Data Augmentation  
+To improve generalization and reduce overfitting, the following augmentation techniques were applied:
 
-The following improvements were added to the CNN model:
+- Horizontal flipping  
+- Random rotation  
+- Zooming  
+- Slight image transformations  
 
-## Regularization Techniques
+These techniques increased dataset variability and helped the model learn more robust features.
 
-- Dropout layers
+### 2. CNN Model Improvements  
+The CNN architecture was improved by:
 
-## Data Augmentation
+- Adding additional convolutional layers  
+- Improving feature extraction depth  
+- Keeping Batch Normalization layers  
+- Using Dropout for regularization  
 
-The following augmentation techniques were applied:
+These changes helped stabilize training and improve accuracy.
 
-- Horizontal flipping
-- Rotation
-- Zooming
+### 3. Training Optimization  
+- Adjusted learning rate for better convergence  
+- Tuned batch size for stable training  
+- Monitored validation loss to reduce overfitting  
 
-These methods helped improve model robustness and reduce overfitting.
+### 4. MLP vs CNN Experiment Setup  
+A structured comparison was performed between:
 
-# Improved CNN Architecture
+- **MLP (baseline model)**  
+- **CNN (improved model with Batch Normalization and augmentation)**  
 
-The updated CNN architecture includes:
+Both models were trained under similar conditions to ensure fair comparison.
 
-- Additional convolutional layers
-- Dropout layers
-- ReLU activation functions
-- MaxPooling layers
-- Fully connected layers
-- Softmax output layer
+## Results and Observations  
 
-# Experiments Conducted
+### MLP Model  
+- Fast training speed  
+- Poor performance on complex image data  
+- Unable to capture spatial features  
 
-The following experiments were performed:
-
-- Compared baseline CNN and improved CNN architectures
-- Tested different dropout rates
-- Tested different numbers of convolutional filters
-- Evaluated the impact of data augmentation
-- Analyzed training and validation performance
-
-# Current Results
-
-- Improved model achieved higher validation accuracy.
-- Validation accuracy increased from approximately 70% to around 82–85%.
-- Overfitting was reduced compared to the baseline model.
-- Training became more stable after adding Batch Normalization.
-
-# Performance Analysis
-
-Performance evaluation included:
-
-- Accuracy graphs
-- Loss graphs
-- Validation performance comparison
-- Error analysis on incorrectly classified images
-
-The improved model demonstrated better generalization on unseen test data.
-
-# Problems / Challenges
-
-- Training time increased due to deeper architecture.
-- Hyperparameter tuning still affects performance.
-- Some classes remain difficult to classify because of visual similarity.
+### CNN Model  
+- Significantly higher accuracy than MLP  
+- Better generalization on validation data  
+- Batch Normalization improved training stability  
+- Data augmentation reduced overfitting  
 
 
-# Plan for Next Week
+## Key Insight  
+CNN clearly outperforms MLP in image classification tasks because it can learn spatial and hierarchical features, while MLP treats images as flat vectors.
 
-- Perform final model optimization.
-- Generate confusion matrix and classification report.
-- Save and export the final trained model.
-- Prepare final report and presentation slides.
-- Summarize project findings and conclusions.
+
+## Next Steps (Week 4 Plan)  
+- Final evaluation of models on test set  
+- Generate final performance metrics (accuracy, precision, recall, F1-score)  
+- Visualize results (loss/accuracy graphs)  
+- Prepare final report and conclusion  
