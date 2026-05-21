@@ -57,7 +57,7 @@ The dataset is especially suitable for:
 
 One of the major advantages of this dataset is that it provides balanced scene categories and enough image diversity to help neural networks learn meaningful visual features.
 
-Additionally, the predefined train and test splits allow reproducible experiments and fair model evaluation.
+Additionally, the predefined train and test splits allow reproducible experiments and fair model evaluation.Suitable for comparing different deep learning models (CNN vs MLP)  
 
 ## Conclusion
 
